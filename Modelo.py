@@ -5,9 +5,12 @@ Created on Thu Nov 22 12:56:57 2018
 @author: john ochoa
 """
 #%%
-import numpy as np;
-import pydicom as dicom;
-import os;
+import numpy as np
+import pydicom as dicom
+import os
+from PIL import Image
+
+
 class DICOM(object):
     def __init__(self):
         self.__dcm = None;
@@ -75,8 +78,7 @@ class DICOM(object):
             self.__data[:, :, counter] = ds.pixel_array;
             counter = counter + 1;       
             print(counter)
-        return True;
-    #%%  
+        return True
 
     def obtenerNombrePaciente(self):
         return self.__nombre_paciente
@@ -97,13 +99,30 @@ class DICOM(object):
         return self.__medico_tratante
               
     def returnSliceAxial(self,position):
-        print(self.__data[:,:,position])
         return self.__data[:,:,position];
     
     def returnSliceCoronal(self,position):
-        print(self.__data[position,:,:])
         return self.__data[position,:,:];
     
     def returnSliceSagital(self,position):
-        print(self.__data[:,position,:])
         return self.__data[:,position,:];
+
+    def convertir_a_dicom(self, imagen, ruta_guardado):
+        archivo_entrada = imagen
+        archivo_salida = ruta_guardado + "/dicom_img.dcm"
+        formato = ' -k 0028,0030=1,1 -k 0018,0050=1'
+
+        img = Image.open(archivo_entrada).convert('L')
+        img.save('temp.jpeg')
+
+        archivo_entrada = 'temp.jpeg'
+
+        cmd = "/usr/bin/img2dcm " + archivo_entrada + " " + archivo_salida + formato
+
+        os.system(cmd)  # returns the exit code in unix
+
+        dset = dicom.dcmread(archivo_salida)
+        dset[0x0028, 0x0030].value = [1, 1]
+        dset.save_as(archivo_salida)
+
+        return True

@@ -59,6 +59,9 @@ class Coordinador(object):
 
     def obtenerMedicoTratante(self):
         return self.__mi_dicom.obtenerMedicoTratante()
+
+    def convertir_a_dicom(self, imagen, ruta_guardado):
+        return self.__mi_dicom.convertir_a_dicom(imagen, ruta_guardado)
     
 
 p = Principal()

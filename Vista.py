@@ -11,6 +11,7 @@ import matplotlib.pyplot as plt
 #contenido para graficos de matplotlib
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 
+
 # clase con el lienzo (canvas=lienzo) para mostrar en la interfaz los graficos matplotlib, el canvas mete la grafica dentro de la interfaz
 class MyGraphCanvas(FigureCanvas):
     #constructor
@@ -82,7 +83,8 @@ class InterfazGrafico(QMainWindow):
         #se organizan las senales 
         self.boton_cargar.clicked.connect(self.cargar_dicom);
         self.boton_atras.clicked.connect(self.atras);
-        self.boton_adelante.clicked.connect(self.adelante); 
+        self.boton_adelante.clicked.connect(self.adelante);
+        self.boton_conv_jpeg_to_dicom.clicked.connect(self.convertir_a_dcm);
         
     def asignar_Controlador(self,controlador):
         self.__coordinador=controlador
@@ -135,3 +137,20 @@ class InterfazGrafico(QMainWindow):
                     str(self.__coordinador.obtenerSexoPaciente()))
                 self.medico_tratante.setText(
                     str(self.__coordinador.obtenerMedicoTratante()))
+
+    def convertir_a_dcm(self):
+        archivo_jpeg, _ = QFileDialog.getOpenFileName(self,
+                                                   "Seleccione el archivo jpeg a convertir",
+                                                   ".", "Images (*.jpg *.jpeg)")
+
+        directorio = QFileDialog.getExistingDirectory(self,
+                                                      "Seleccione un directorio para guardar imagen dcm",
+                                                      ".",
+                                                      QFileDialog.ShowDirsOnly)
+
+        if (directorio != "") & (archivo_jpeg != ""):
+            print('archivo JPEG: ', archivo_jpeg)
+            print('directorio: ', directorio)
+            self.__coordinador.convertir_a_dicom(archivo_jpeg, directorio)
+        else:
+            print('No seleccionó o el directorio o una imagen jpeg correctamente')

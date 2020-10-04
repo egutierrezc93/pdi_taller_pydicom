@@ -115,17 +115,17 @@
      <string>Zoom</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="convD">
+   <widget class="QPushButton" name="boton_conv_jpeg_to_dicom">
     <property name="geometry">
      <rect>
       <x>620</x>
       <y>430</y>
-      <width>141</width>
+      <width>181</width>
       <height>23</height>
      </rect>
     </property>
     <property name="text">
-     <string>Convertir a DICOM</string>
+     <string>Convertir JPEG a DICOM</string>
     </property>
    </widget>
    <widget class="QLabel" name="id_paciente">
