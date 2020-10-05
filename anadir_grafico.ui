@@ -27,8 +27,8 @@
    <widget class="QPushButton" name="boton_cargar">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>400</y>
+      <x>70</x>
+      <y>420</y>
       <width>101</width>
       <height>23</height>
      </rect>
@@ -40,7 +40,7 @@
    <widget class="QPushButton" name="boton_atras">
     <property name="geometry">
      <rect>
-      <x>140</x>
+      <x>280</x>
       <y>400</y>
       <width>75</width>
       <height>23</height>
@@ -53,7 +53,7 @@
    <widget class="QPushButton" name="boton_adelante">
     <property name="geometry">
      <rect>
-      <x>260</x>
+      <x>400</x>
       <y>400</y>
       <width>75</width>
       <height>23</height>
@@ -63,36 +63,10 @@
      <string>&gt;</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="boton_aumentar">
-    <property name="geometry">
-     <rect>
-      <x>480</x>
-      <y>400</y>
-      <width>75</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Aumentar</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="boton_disminuir">
-    <property name="geometry">
-     <rect>
-      <x>370</x>
-      <y>400</y>
-      <width>75</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Disminuir</string>
-    </property>
-   </widget>
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>140</x>
+      <x>280</x>
       <y>430</y>
       <width>201</width>
       <height>16</height>
@@ -100,19 +74,6 @@
     </property>
     <property name="text">
      <string>Desplazamiento entre cortes</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_2">
-    <property name="geometry">
-     <rect>
-      <x>440</x>
-      <y>430</y>
-      <width>71</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Zoom</string>
     </property>
    </widget>
    <widget class="QPushButton" name="boton_conv_jpeg_to_dicom">
